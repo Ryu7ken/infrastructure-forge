@@ -15,3 +15,12 @@ variable "bucket_name" {
     error_message = "Bucket name must be 3-63 characters, start/end with lowercase letter or number, contain only lowercase letters, numbers, hyphens, and periods, not contain consecutive periods, and not be formatted as an IP address."
   }
 }
+
+variable "index_html_filepath" {
+  description = "The file path for index.html"
+  type = string
+  validation {
+    condition = fileexists(var.index_html_filepath)
+    error_message = "The provided path for index.html does not"
+  }
+}
