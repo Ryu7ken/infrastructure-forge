@@ -70,3 +70,42 @@ resource "aws_s3_object" "object" {
 
 [File Exists Function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
 
+We need to create a Variable to provide the file path for the files for Hosting, so that we don't hard code the paths.
+
+```hcl
+variable "index_html_filepath" {
+  description = "The file path for index.html"
+  type = string
+  validation {
+    condition = fileexists(var.index_html_filepath)
+    error_message = "The provided path for index.html does not"
+  }
+}
+
+variable "error_html_filepath" {
+  description = "The file path for error.html"
+  type = string
+  validation {
+    condition = fileexists(var.error_html_filepath)
+    error_message = "The provided path for error.html does not"
+  }
+}
+```
+
+And in `terraform.tfvars` provide the absolute path.
+
+```hcl
+index_html_filepath="c:/Users/Ryuken/Documents/terraform-bootcamp/public/index.html"
+error_html_filepath="c:/Users/Ryuken/Documents/terraform-bootcamp/public/error.html"
+```
+
+## Fileexists Function
+
+This a built-in Terraform function to check the existence of a file.
+
+```hcl
+  validation {
+    condition = fileexists(var.error_html_filepath)
+    error_message = "The provided path for error.html does not"
+  }
+```
