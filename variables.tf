@@ -22,3 +22,8 @@ variable "content_version" {
   description = "The content version. Should be a postitive integer starting at 1"
   type = number
 }
+
+variable "assets_filepath" {
+  description = "The file path for the Terrahouse website assets"
+  type = string
+}
