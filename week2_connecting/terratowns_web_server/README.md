@@ -12,3 +12,6 @@ python server.py
 
 All our code is stored in the `server.py` file.
 
+## CRUD Operation Scripts
+
+All the scrpits to perform CRUD Operations are present in the `bin/terratowns` directory.
