@@ -1,16 +1,57 @@
 # Terratowns Mock Web Server
 
-Andrew used Ruby Sinatra Web Server to create the Mock Server, but I do not know Ruby, so I used Gemini CLI to convert the Ruby code into Python Flask equivalent code.
+We will use Ruby Sinatra Web Server to create the Mock Server.
 
-## Running the Web Server
+## Working with Ruby
 
-We can run the server with the command
+### Bundler
 
-```python
-python server.py
+Bundler is a package manager for Ruby. It is the primary way to install Ruby packages (known as gems) for Ruby.
+
+### Install Gems
+
+You need to create a Gemfile and define your gems in that file.
+
+[Source]("https://rubygems.org")
+
+```ruby
+gem 'sinatra'
+gem 'rake'
+gem 'pry'
+gem 'puma'
+gem 'activerecord'
 ```
 
-All our code is stored in the `server.py` file.
+Then you need to run the `bundle install` command.
+
+This will install the gems on the system globally (unlike Nodejs which install packages in place in a folder called `node_modules`)
+
+A `Gemfile.lock` will be created to lock down the gem versions used in this project.
+
+### Executing Ruby Scripts in the Context of Bundler
+
+We have to use `bundle exec` to tell future Ruby scripts to use the gems we installed. This is the way we set context.
+
+### Sinatra
+
+Sinatra is a micro web-framework for ruby to build web-apps.
+
+Its great for mock or development servers or for very simple projects.
+
+You can create a web-server in a single file.
+
+[Sinatra Website](https://sinatrarb.com/)
+
+## Running Web Server
+
+We can run the web server by executing the following commands:
+
+```ruby
+bundle install
+bundle exec ruby server.rb
+```
+
+All of the code for our server is stored in the `server.rb` file.
 
 ## CRUD Operation Scripts
 
