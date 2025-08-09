@@ -19,7 +19,7 @@ RESPONSE=$(curl -X GET \
 -H "Authorization: Bearer $token" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
-http://localhost:5000/api/u/$user_uuid/homes/$house_uuid)
+http://localhost:4567/api/u/$user_uuid/homes/$house_uuid)
 
 # Disable printing of commands
 #set +x
