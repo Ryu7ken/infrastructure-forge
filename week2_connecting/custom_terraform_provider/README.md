@@ -36,3 +36,63 @@ go get github.com/hashicorp/terraform-plugin-sdk/v2/plugin
 ```go
 go build -o terraform-provider-terratowns_v1.0.0
 ```
+
+- We can also use a Bash Script to create a build of the custom Terratowns Provider in a standard directory to keep build packages.
+
+```bash
+#! /usr/bin/bash
+
+PLUGIN_DIR="c:/Users/Baquiur/Documents/terraform-bootcamp/.terraform.d/plugins/local.providers/local/terratowns/1.0.0/"
+PLUGIN_NAME="terraform-provider-terratowns_v1.0.0"
+PROJECT_ROOT_DIR="c:/Users/Baquiur/Documents/terraform-bootcamp/"
+
+cd $PROJECT_ROOT_DIR/terraform-provider-terratowns
+cp $PROJECT_ROOT_DIR/terraformrc $PROJECT_ROOT_DIR/.terraformrc
+rm -rf $PROJECT_ROOT_DIR/.terraform.d/plugins
+rm -rf $PROJECT_ROOT_DIR/.terraform
+rm -rf $PROJECT_ROOT_DIR/.terraform.lock.hcl
+go build -o $PLUGIN_NAME
+mkdir -p $PLUGIN_DIR/x86_64/
+mkdir -p $PLUGIN_DIR/linux_amd64/
+cp $PLUGIN_NAME $PLUGIN_DIR/x86_64
+cp $PLUGIN_NAME $PLUGIN_DIR/linux_amd64
+```
+
+## Using Custom Provider Locally
+
+Terraform downloads providers from public registries (like registry.terraform.io). But when we are developing a custom provider, it only exists locally on our machine and not in any registry yet.
+
+So we create `.terraformrc` file for Terraform to look for for providers locally according to the mentioned directories.
+
+```hcl
+provider_installation {
+  filesystem_mirror {
+    path = "$PWD/.terraform.d/plugins"
+    include = ["local.providers/*/*"]
+  } 
+  direct {
+   exclude = ["local.providers/*/*"] 
+  }
+}
+```
+
+## Adding Custom Provider in Main
+
+We need to add our Custom Terratowns Provider in the `main.tf` file.
+
+```hcl
+terraform {
+  required_providers {
+    terratowns = {
+      source = "local.providers/local/terratowns"
+      version = "1.0.0"
+    }
+  }
+}
+
+provider "terratowns" {
+  endpoint = "http://localhost:5000"
+  user_uuid = "e328f4ab-b99f-421c-84c9-4ccea042c7d1"
+  token = "9b49b3fb-b8e9-483c-b703-97ba88eef8e0"
+}
+```
