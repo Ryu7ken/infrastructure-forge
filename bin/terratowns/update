@@ -23,7 +23,7 @@ RESPONSE=$(curl -X PUT \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -d "{\"name\": \"$name\", \"description\": \"$description\", \"content_version\": $content_version}" \
-http://localhost:5000/api/u/$user_uuid/homes/$house_uuid)
+http://localhost:4567/api/u/$user_uuid/homes/$house_uuid)
 
 # Disable printing of commands
 #set +x
