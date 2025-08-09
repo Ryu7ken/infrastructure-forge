@@ -18,15 +18,9 @@ RESPONSE=$(curl -X POST \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -d "{\"town\": \"$town\", \"name\": \"$name\", \"description\": \"$description\", \"domain_name\": \"$domain_name\", \"content_version\": $content_version}" \
-http://localhost:5000/api/u/$user_uuid/homes)
-
-echo "Raw RESPONSE:"
-echo "$RESPONSE"
+http://localhost:4567/api/u/$user_uuid/homes)
 
 # Disable printing of commands
-
-
-
 #set +x
 
 # Extract headers
