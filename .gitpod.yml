@@ -3,27 +3,26 @@ tasks:
     env:
       TF_LOG: DEBUG
     before: |
-      cd $PROJECT_ROOT
+      cd /workspace/terraform-bootcamp
       source ./bin/set_tf_alias
       source ./bin/install_terraform_cli
       source ./bin/generate_tfrc_credentials
-      cp $PROJECT_ROOT/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
+      cp /workspace/terraform-bootcamp/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
   - name: sinatra
     before: | 
-      cd $PROJECT_ROOT
-      cd week2_connecting/terratowns_web_server
+      cd /workspace/terraform-bootcamp/week2_connecting/terratowns_web_server
       bundle install
       bundle exec ruby server.rb 
   - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
-      cd $PROJECT_ROOT
+      cd /workspace/terraform-bootcamp
       source ./bin/set_tf_alias
       source ./bin/install_aws_cli
   - name: http-server
     before: |
-      cd $PROJECT_ROOT
+      cd /workspace/terraform-bootcamp
       npm install --global http-server
     command: 
       http-server
