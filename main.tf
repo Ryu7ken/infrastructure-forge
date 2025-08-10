@@ -32,3 +32,18 @@ provider "terratowns" {
 #   content_version = var.content_version
 #   assets_filepath = var.assets_filepath
 # }
+
+resource "terratowns_home" "home" {
+  name = "How to play Roller Coaster Tycoon in 2025!"
+  description = <<DESCRIPTION
+Roller Coaster Tycoon is a game from 1999 created by Chris Sawyer.
+It is famous for run running on every Operating System
+due to it being developed in C programming language.
+People still love to play it despite its old looking graphics.
+This is my guide that will show you how to play Roller Coaster Tycoon.
+DESCRIPTION
+  #domain_name = module.terrahouse_aws.cloudfront_url
+  domain_name = "3fdq3gz.cloudfront.net"
+  town = "gamers-grotto"
+  content_version = 1
+}
