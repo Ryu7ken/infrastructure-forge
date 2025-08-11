@@ -1,6 +1,5 @@
-user_uuid="ff4c69f3-0024-43db-954d-2cb9aa28395f"
-bucket_name="xnlcr6ulv58co7xz1evapi2bhx1daufo"
 index_html_filepath="/workspace/terraform-bootcamp/public/index.html"
 error_html_filepath="/workspace/terraform-bootcamp/public/error.html"
-assets_filepath="/workspace/terraform-bootcamp/public/assets"
+assets_filepath="/workspace/terraform-bootcamp/public/assets/"
+terratowns_endpoint="https://terratowns.cloud/api"
 content_version=1

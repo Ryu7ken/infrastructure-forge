@@ -1,11 +1,16 @@
-variable "user_uuid" {
+variable "teacherseat_user_uuid" {
     type        = string
     description = "UUID for the user"
 }
 
-variable "bucket_name" {
+variable "terratowns_access_token" {
     type        = string
-    description = "Name of the S3 bucket"
+    description = "Terratowns access token for the user"
+}
+
+variable "terratowns_endpoint" {
+    type        = string
+    description = "Terratowns Endpoint"
 }
 
 variable "index_html_filepath" {
