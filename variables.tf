@@ -13,22 +13,16 @@ variable "terratowns_endpoint" {
     description = "Terratowns Endpoint"
 }
 
-variable "index_html_filepath" {
-  description = "The file path for index.html"
-  type = string
+variable "rollercoaster" {
+  type = object({
+    public_filepath = string
+    content_version = number
+  })
 }
 
-variable "error_html_filepath" {
-  description = "The file path for error.html"
-  type = string
-}
-
-variable "content_version" {
-  description = "The content version. Should be a postitive integer starting at 1"
-  type = number
-}
-
-variable "assets_filepath" {
-  description = "The file path for the Terrahouse website assets"
-  type = string
+variable "music" {
+  type = object({
+    public_filepath = string
+    content_version = number
+  })
 }

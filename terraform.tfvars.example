@@ -1,5 +1,9 @@
-index_html_filepath="/workspace/terraform-bootcamp/public/index.html"
-error_html_filepath="/workspace/terraform-bootcamp/public/error.html"
-assets_filepath="/workspace/terraform-bootcamp/public/assets/"
 terratowns_endpoint="https://terratowns.cloud/api"
-content_version=1
+rollercoaster = {
+    public_filepath="/workspace/terraform-bootcamp/public/rollercoaster"
+    content_version=1
+}
+music = {
+    public_filepath="/workspace/terraform-bootcamp/public/music"
+    content_version=1
+}
