@@ -23,9 +23,9 @@ resource "aws_s3_bucket_website_configuration" "website_configuration" {
 resource "aws_s3_object" "index_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "index.html"
-  source = var.index_html_filepath
+  source = "${var.public_filepath}/index.html"
   content_type = "text/html"
-  etag = filemd5(var.index_html_filepath)
+  etag = filemd5("${var.public_filepath}/index.html")
   lifecycle {
     replace_triggered_by = [ terraform_data.content_version.output ]
     ignore_changes = [ etag ]
@@ -33,11 +33,11 @@ resource "aws_s3_object" "index_html" {
 }
 
 resource "aws_s3_object" "upload_assets" {
-  for_each = fileset("${var.assets_filepath}","*.{jpg,jpeg,png,gif}")
+  for_each = fileset("${var.public_filepath}/assets","*.{jpg,jpeg,png,gif}")
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "assets/${each.key}"
-  source = "${var.assets_filepath}/${each.key}"
-  etag = filemd5("${var.assets_filepath}/${each.key}")
+  source = "${var.public_filepath}/${each.key}"
+  etag = filemd5("${var.public_filepath}/assets/${each.key}")
   lifecycle {
     replace_triggered_by = [ terraform_data.content_version.output ]
     ignore_changes = [ etag ]
@@ -47,9 +47,9 @@ resource "aws_s3_object" "upload_assets" {
 resource "aws_s3_object" "error_html" {
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "error.html"
-  source = var.error_html_filepath
+  source = "${var.public_filepath}/error.html"
   content_type = "text/html"
-  etag = filemd5(var.error_html_filepath)
+  etag = filemd5("${var.public_filepath}/error.html")
   lifecycle {
     ignore_changes = [ etag ]
   }
