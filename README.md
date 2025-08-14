@@ -86,9 +86,24 @@ This repository contains the work for the Terraform Cloud Project Bootcamp by An
     *   [Outputs in Module](./week1_building/terrahouse_module/README.md#outputs-in-module)
     *   [Fix using Terraform Refresh](./week1_building/terrahouse_module/README.md#fix-using-terraform-refresh)
 
+### [Week 2: Connecting](./week2_connecting/)
+
+*   **[Custom Terraform Provider](./week2_connecting/custom_terraform_provider/README.md)**
+    *   [Building Terratowns Provider](./week2_connecting/custom_terraform_provider/README.md#building-terratowns-provider)
+    *   [Using Custom Provider Locally](./week2_connecting/custom_terraform_provider/README.md#using-custom-provider-locally)
+*   **[Terratowns Web Server](./week2_connecting/terratowns_web_server/README.md)**
+    *   [Working with Ruby](./week2_connecting/terratowns_web_server/README.md#working-with-ruby)
+    *   [Running Web Server](./week2_connecting/terratowns_web_server/README.md#running-web-server)
+*   **[Connecting to Terratowns](./week2_connecting/terratowns_connection_test/README.md)**
+    *   [Connecting Terrahome to Terratowns](./week2_connecting/terratowns_connection_test/README.md#connecting-to-terratowns)
+*   **[Multi Terrahouse and Refactoring](./week2_connecting/multi_terrahouse/README.md)**
+    *   [Refactoring for Multiple Terrahouse](./week2_connecting/multi_terrahouse/README.md#multi-terrahouse-and-refactoring)
+
 ## Journal
 
 ### Week 0: Project Preparation
+
+![Week 0 Architecture](/assets/week0.png)
 
 | Activity | Description |
 | :--- | :--- |
@@ -100,6 +115,8 @@ This repository contains the work for the Terraform Cloud Project Bootcamp by An
 
 ### Week 1: Building
 
+![Week 1 Architecture](/assets/week1.png)
+
 | Activity | Description |
 | :--- | :--- |
 | **Root Module Restructure** | Refactored the project to follow a standard Terraform directory structure, separating resources, variables, and outputs into their own files. This improves organization and maintainability. |
@@ -110,3 +127,14 @@ This repository contains the work for the Terraform Cloud Project Bootcamp by An
 | **Content Versioning** | Introduced a `content_version` variable and the `terraform_data` resource to manually trigger updates to the website content and invalidate the CloudFront cache, providing granular control over deployments. |
 | **Cache Invalidation with `local-exec`** | Used a `local-exec` provisioner to automatically invalidate the CloudFront cache upon content updates, streamlining the deployment process. |
 | **Custom `terrahouse` Module** | Created a custom module to encapsulate the entire infrastructure, promoting code reuse and simplifying the root configuration. |
+
+### Week 2: Connecting
+
+![Week 2 Architecture](/assets/week2.png)
+
+| Activity | Description |
+| :--- | :--- |
+| **Custom Terraform Provider** | Developed a custom Terraform provider in Go to manage Terratowns resources. This involved initializing a Go module, building the provider binary, and configuring Terraform to use the local provider via a `.terraformrc` file. |
+| **Terratowns Mock Server** | Created a mock web server using Ruby and Sinatra to simulate the Terratowns API. This enabled local development and testing of the custom provider without needing access to the live service. |
+| **Connecting to Terratowns** | Integrated the Terrahome infrastructure with the Terratowns service by configuring the provider with the correct API endpoint and authentication credentials. Tested the connection with a dedicated test town. |
+| **Multi-Terrahouse Deployment** | Refactored the Terraform code to support the deployment of multiple Terrahouse environments. Migrated the state management to Terraform Cloud to facilitate collaboration and maintain separate states for each environment. |
